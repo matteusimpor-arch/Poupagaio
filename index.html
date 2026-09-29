@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Poupagaio Finance — Organize hoje. Voe mais longe.</title>
+    <meta name="description" content="Organize hoje. Voe mais longe. Fundação técnica e visual de finanças pessoais e colaborativas." />
+    <meta property="og:title" content="Poupagaio Finance" />
+    <meta property="og:description" content="Organize hoje. Voe mais longe. Fundação técnica e visual de finanças pessoais e colaborativas." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#075C45" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2026-V3-OFFICIAL" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2026-V3-OFFICIAL" />
+    <link rel="icon" href="/favicon.ico?v=2026-V3-OFFICIAL" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026-V3-OFFICIAL" />
+    <link rel="manifest" href="/manifest.json?v=2026-V3-OFFICIAL" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function() {
+        try {
+          // Clear any legacy localStorage theme settings to avoid conflicts
+          localStorage.removeItem('poupagaio_theme');
+          localStorage.removeItem('poupagaio_theme_mode');
+          localStorage.removeItem('poupagaio_theme_session');
+          
+          // Clear all cache storage and unregister service workers immediately
+          if ('caches' in window) {
+            caches.keys().then(function(names) {
+              names.forEach(function(name) {
+                caches.delete(name);
+              });
+            });
+          }
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+              var unregisterPromiseAll = registrations.map(function(reg) {
+                return reg.unregister();
+              });
+              Promise.all(unregisterPromiseAll).then(function(results) {
+                if (results.some(Boolean)) {
+                  window.location.reload(true);
+                }
+              });
+            });
+          }
+
+          // Only read from sessionStorage to maintain choice within active session/tab
+          var mode = sessionStorage.getItem('poupagaio_theme_session') || 'poupagaio';
+          if (mode !== 'poupagaio' && mode !== 'ocean' && mode !== 'nature') {
+            mode = 'poupagaio';
+          }
+          
+          document.documentElement.setAttribute('data-theme', mode);
+          document.documentElement.dataset.theme = mode;
+          document.documentElement.classList.remove('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-[var(--bg-page)] text-[var(--text-main)] antialiased selection:bg-[#78D9A6]/30 selection:text-[#075C45]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Poupagaio Finance",
+  "description": "Organize hoje. Voe mais longe. Fundação técnica e visual de finanças pessoais e colaborativas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

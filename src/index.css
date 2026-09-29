@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  /* ==========================================================================
+     CENTRALIZED THEME DESIGN TOKENS
+     ========================================================================== */
+
+  /* 1. Default / Poupagaio Theme (🌿 Poupagaio) */
+  :root, [data-theme="poupagaio"] {
+    --bg-page: #F3F4F4;
+    --card-bg: #FFFFFF;
+    --surface-secondary: #EBECEE;
+    --surface-elevated: #FFFFFF;
+    --card-border: #D2DDD6;
+    --border-subtle: #E2ECE6;
+    
+    --text-main: #1F2421;
+    --text-primary: #1F2421;
+    --text-secondary: #5E6963;
+    --text-muted: #8A9690;
+    
+    --brand-primary: #075C45;
+    --brand-secondary: #16A66A;
+    --brand-light: #78D9A6;
+    --brand-hover: #02402E;
+    
+    --header-bg: rgba(255, 255, 255, 0.88);
+    --modal-bg: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-border: #D2DDD6;
+    
+    --leaf-color: #075C45;
+    --leaf-opacity: 0.14;
+
+    /* Financial Semantic Tokens (FIXED & UNTOUCHED) */
+    --finance-income: #16A66A;
+    --finance-variable-expense: #E11D48;
+    --finance-fixed-expense: #8B5CF6;
+    --finance-installment: #F59E0B;
+  }
+
+  /* 2. Oceano Theme (🌊 Oceano) */
+  [data-theme="ocean"] {
+    --bg-page: #F0F9FF;
+    --card-bg: #FFFFFF;
+    --surface-secondary: #E0F2FE;
+    --surface-elevated: #FFFFFF;
+    --card-border: #BAE6FD;
+    --border-subtle: #E0F2FE;
+    
+    --text-main: #0C4A6E;
+    --text-primary: #0C4A6E;
+    --text-secondary: #0369A1;
+    --text-muted: #38BDF8;
+    
+    --brand-primary: #0284C7;
+    --brand-secondary: #06B6D4;
+    --brand-light: #67E8F9;
+    --brand-hover: #0369A1;
+    
+    --header-bg: rgba(240, 249, 255, 0.88);
+    --modal-bg: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-border: #BAE6FD;
+    
+    --leaf-color: #0284C7;
+    --leaf-opacity: 0.12;
+
+    --finance-income: #16A66A;
+    --finance-variable-expense: #E11D48;
+    --finance-fixed-expense: #8B5CF6;
+    --finance-installment: #F59E0B;
+  }
+
+  /* 3. Natureza Theme (🍃 Natureza - Organic & Earthy Forest Green) */
+  [data-theme="nature"] {
+    --bg-page: #F4F6F0;
+    --card-bg: #FFFFFF;
+    --surface-secondary: #E6ECDE;
+    --surface-elevated: #FFFFFF;
+    --card-border: #C8D6B9;
+    --border-subtle: #E2E9D8;
+    
+    --text-main: #1C2E19;
+    --text-primary: #1C2E19;
+    --text-secondary: #42573B;
+    --text-muted: #688060;
+    
+    --brand-primary: #2D5A27;
+    --brand-secondary: #558B2F;
+    --brand-light: #8BC34A;
+    --brand-hover: #1B3B18;
+    
+    --header-bg: rgba(244, 246, 240, 0.88);
+    --modal-bg: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-border: #C8D6B9;
+    
+    --leaf-color: #2D5A27;
+    --leaf-opacity: 0.18;
+
+    --finance-income: #16A66A;
+    --finance-variable-expense: #E11D48;
+    --finance-fixed-expense: #8B5CF6;
+    --finance-installment: #F59E0B;
+  }
+
+  ::selection,
+  *::selection {
+    background-color: rgba(37, 99, 235, 0.22);
+    color: var(--brand-primary);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL PALETTE HARMONIZATION TOKENS
+   Converts hardcoded structural brand classes to active theme CSS tokens
+   ========================================================================== */
+
+/* Ocean Theme Overrides */
+[data-theme="ocean"] .bg-\[\#F3F4F4\],
+[data-theme="ocean"] .bg-\[\#F7F4EA\],
+[data-theme="ocean"] .bg-\[\#F7F9F7\] {
+  background-color: var(--bg-page) !important;
+}
+
+[data-theme="ocean"] .text-\[\#075C45\],
+[data-theme="ocean"] .text-\[\#02402E\] {
+  color: var(--brand-primary) !important;
+}
+
+[data-theme="ocean"] .bg-\[\#075C45\],
+[data-theme="ocean"] .bg-\[\#02402E\] {
+  background-color: var(--brand-primary) !important;
+}
+
+[data-theme="ocean"] .bg-\[\#16A66A\] {
+  background-color: var(--brand-secondary) !important;
+}
+
+[data-theme="ocean"] .border-\[\#075C45\],
+[data-theme="ocean"] .border-\[\#02402E\],
+[data-theme="ocean"] .border-\[\#16A66A\] {
+  border-color: var(--brand-secondary) !important;
+}
+
+/* Ensure Leaf SVG Color Matches Active Theme */
+.botanical-leaf-svg {
+  color: var(--leaf-color) !important;
+  opacity: var(--leaf-opacity) !important;
+}
